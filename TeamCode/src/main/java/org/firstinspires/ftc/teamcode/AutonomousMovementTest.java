@@ -17,7 +17,7 @@ public class AutonomousMovementTest extends LinearOpMode {
     private DcMotor motorBackRight;
     private DcMotor motorBackLeft;
 
-    DriveControl Move = new DriveControl();
+    DriveControl move = new DriveControl();
 
 
     @Override
@@ -32,7 +32,7 @@ public class AutonomousMovementTest extends LinearOpMode {
 
         waitForStart();
 
-        Move.drive(1,10);
+        move.drive(1,10);
 
         fourWheelTurn(1,90);
         sleep(500);
@@ -86,5 +86,20 @@ public class AutonomousMovementTest extends LinearOpMode {
         motorFrontRight.setPower(0);
         motorFrontLeft.setPower(0);
         motorBackRight.setPower(0);
+    }
+    
+    public void closeClaw(){
+        leftServo.setPosition(1);
+        rightServo.setPosition(0);
+    }
+
+    public void openClaw(){
+        leftServo.setPosition(0.5);
+        rightServo.setPosition(0.2);
+    }
+    public void liftMovement(double power, long time){
+        liftMotor.setPower(power);
+        sleep(time);
+        completeStop();
     }
 }
